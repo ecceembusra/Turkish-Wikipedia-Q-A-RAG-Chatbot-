@@ -32,18 +32,19 @@ Uygulama Hugging Face Spaces üzerinde barındırılmaktadır:
 ---
 
 ## 🏗️ Proje Yapısı
+```bash
 📂 turkish-wikipedia-rag/
 turkish-wikipedia-rag/
-├── app.py                # Streamlit arayüzü
-├── rag_pipeline.py       # Ana RAG pipeline (retrieval + rerank + generation)
-├── providers.py          # LLM, Embedding ve Reranker fonksiyonları
-├── data_preparation.py   # Wikipedia verisini işleyip FAISS indeksi oluşturur
-├── requirements.txt      # Kütüphane gereksinimleri
-├── vectorstore/
-│   ├── index.faiss       # Vektör indeks dosyası
-│   └── meta.jsonl.gz     # Metaveri kayıtları
-└── README.md
-
+ ├── app.py                # Streamlit arayüzü
+ ├── rag_pipeline.py       # Ana RAG pipeline (retrieval + rerank + generation)
+ ├── providers.py          # LLM, Embedding ve Reranker fonksiyonları
+ ├── data_preparation.py   # Wikipedia verisini işleyip FAISS indeksi oluşturur
+ ├── requirements.txt      # Kütüphane gereksinimleri
+ ├── vectorstore/
+ │   ├── index.faiss       # Vektör indeks dosyası
+ │   └── meta.jsonl.gz     # Metaveri kayıtları
+ └── README.md
+```
 ---
 
 ## ⚙️ Kullanılan Teknolojiler
