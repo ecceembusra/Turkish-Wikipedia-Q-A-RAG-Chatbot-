@@ -182,8 +182,8 @@ Pasaj                                                  Rerank Skoru
 
 Bu durumda sistem, Sabiha Gökçen’i içeren pasajı seçer ve cevabı şu şekilde oluşturur:
 ✅ Yanıt: Sabiha Gökçen.
-Türkiye’nin ilk kadın pilotu kimdir sorusunun yanıtıdır.
-Kaynak: Wikipedia - Mustafa Kemal Atatürk
+-Türkiye’nin ilk kadın pilotu kimdir sorusunun yanıtıdır.
+-Kaynak: Wikipedia - Mustafa Kemal Atatürk
 
 📍Kısa Özet
 Aşama
