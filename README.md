@@ -173,6 +173,40 @@ scores = model.predict(pairs)
 
 # scores ≈ [0.97, 0.23]
 ```
+Bu skorlar daha sonra normalize edilir ve en yüksek skorlar Streamlit arayüzünde “Rerank skoru” etiketiyle gösterilir.
+📊 Örnek:
+Pasaj                                                  Rerank Skoru
+“Sabiha Gökçen Türkiye’nin ilk kadın pilotudur.”         0.971
+“Türkiye Cumhuriyeti 1923 yılında ilan edilmiştir.”		 0.231
+
+
+Bu durumda sistem, Sabiha Gökçen’i içeren pasajı seçer ve cevabı şu şekilde oluşturur:
+✅ Yanıt: Sabiha Gökçen.
+Türkiye’nin ilk kadın pilotu kimdir sorusunun yanıtıdır.
+Kaynak: Wikipedia - Mustafa Kemal Atatürk
+
+📍Kısa Özet
+Aşama
+Model / Teknik
+Amaç
+1️⃣ Retriever (FAISS)
+intfloat/multilingual-e5-large
+En benzer pasajları bulur
+2️⃣ Reranker
+cross-encoder/ms-marco-MiniLM-L-6-v2
+En anlamlı pasajı seçer
+3️⃣ Generator (LLM)
+Gemini API
+Nihai cevabı üretir
+4️⃣ Explainability
+Kaynak bağlantıları
+Kullanıcıya şeffaflık sağlar
+
+🔍 Sonuç:
+“Rerank skoru” yüksek olan pasajlar cevabın çekirdeğini oluşturur.
+Bu skor, projenin “doğru bilgiye erişim” kalitesini ölçmek için de bir metrik olarak değerlendirilebilir.
+
+
 🧠 Örnek Yanıtlar
 
 Soru: Türkiye’nin başkenti hangi şehirdir?
