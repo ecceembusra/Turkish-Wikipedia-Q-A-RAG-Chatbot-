@@ -74,7 +74,7 @@ Uygulama Hugging Face Spaces üzerinde barındırılmaktadır:
 <p align="center">
   <img src="img/UI.JPG" alt="Uygulama Başlangıç Ekranı" width="45%"/>
   &nbsp;&nbsp;&nbsp;
-  <img src="img/Baskent.JPG" alt="Başkent Sorgusu" width="45%"/>
+  <img src="img/Başkent.JPG" alt="Başkent Sorgusu" width="45%"/>
 </p>
 
 ---
@@ -83,7 +83,7 @@ Uygulama Hugging Face Spaces üzerinde barındırılmaktadır:
 <p align="center">
   <img src="img/Pilot.JPG" alt="İlk Kadın Pilot Sorgusu" width="45%"/>
   &nbsp;&nbsp;&nbsp;
-  <img src="img/Besiktas.JPG" alt="Beşiktaş Kuruluş Tarihi" width="45%"/>
+  <img src="img/Beşiktas.JPG" alt="Beşiktaş Kuruluş Tarihi" width="45%"/>
 </p>
 
 > Örnek Sorular:
