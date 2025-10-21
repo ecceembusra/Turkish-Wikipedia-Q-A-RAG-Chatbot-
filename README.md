@@ -72,7 +72,7 @@ Uygulama Hugging Face Spaces üzerinde barındırılmaktadır:
 
 | Uygulama Başlangıç Ekranı | Başkent Sorgusu | İlk Kadın Pilot | İlk Cumhurbaşkanı | Beşiktaş Kuruluş Tarihi |
 |---------------------------|----------------|-----------------|-------------------|--------------------------|
-| ![UI](img/UI.JPG) | ![Başkent](img/Başkent.JPG) | ![Pilot](img/Pilot.jpg) | ![Cumhurbaşkanı](img/Cumhurbaşkanı.JPG) | ![Beşiktaş](img/Beşiktaş.jpg) |
+| ![UI](img/UI.JPG) | ![Başkent](img/Başkent.JPG) | ![Pilot](img/Pilot.JPG) | ![Cumhurbaşkanı](img/Cumhurbaşkanı.JPG) | ![Beşiktaş](img/Beşiktaş.JPG) |
 
 > Örnek Sorular:
 
