@@ -77,7 +77,8 @@ Uygulama Hugging Face Spaces üzerinde barındırılmaktadır:
 > Örnek Sorular:
 
 > - “Türkiye’nin başkenti hangi şehirdir?”  
-> - “Türkiye’nin ilk kadın pilotu kimdir?”  
+> - “Türkiye’nin ilk kadın pilotu kimdir?”
+> - “Türkiye’nin ilk Cumhurbaşkanı kimdir?”  
 > - “Beşiktaş ne zaman kuruldu?”
 
 ---
