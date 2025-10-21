@@ -174,38 +174,52 @@ scores = model.predict(pairs)
 # scores ≈ [0.97, 0.23]
 ```
 Bu skorlar daha sonra normalize edilir ve en yüksek skorlar Streamlit arayüzünde “Rerank skoru” etiketiyle gösterilir.
-📊 Örnek:
-Pasaj                                                  Rerank Skoru
-“Sabiha Gökçen Türkiye’nin ilk kadın pilotudur.”         0.971
-“Türkiye Cumhuriyeti 1923 yılında ilan edilmiştir.”		 0.231
+### 📊 Örnek:
 
+| **Pasaj** | **Rerank Skoru** |
+|------------|:----------------:|
+| “Sabiha Gökçen Türkiye’nin ilk kadın pilotudur.” | **0.971** |
+| “Türkiye Cumhuriyeti 1923 yılında ilan edilmiştir.” | 0.231 |
 
-Bu durumda sistem, Sabiha Gökçen’i içeren pasajı seçer ve cevabı şu şekilde oluşturur:
-✅ Yanıt: Sabiha Gökçen.
--Türkiye’nin ilk kadın pilotu kimdir sorusunun yanıtıdır.
--Kaynak: Wikipedia - Mustafa Kemal Atatürk
+---
 
-📍Kısa Özet
-Aşama
-Model / Teknik
-Amaç
-1️⃣ Retriever (FAISS)
-intfloat/multilingual-e5-large
-En benzer pasajları bulur
-2️⃣ Reranker
-cross-encoder/ms-marco-MiniLM-L-6-v2
-En anlamlı pasajı seçer
-3️⃣ Generator (LLM)
-Gemini API
-Nihai cevabı üretir
-4️⃣ Explainability
-Kaynak bağlantıları
-Kullanıcıya şeffaflık sağlar
+Bu durumda sistem, **Sabiha Gökçen**’i içeren pasajı seçer ve cevabı şu şekilde oluşturur:
 
-🔍 Sonuç:
-“Rerank skoru” yüksek olan pasajlar cevabın çekirdeğini oluşturur.
-Bu skor, projenin “doğru bilgiye erişim” kalitesini ölçmek için de bir metrik olarak değerlendirilebilir.
+> ✅ **Yanıt:** Sabiha Gökçen.  
+> Türkiye’nin ilk kadın pilotu kimdir sorusunun yanıtıdır.  
+> **Kaynak:** [Wikipedia - Mustafa Kemal Atatürk](https://tr.wikipedia.org/wiki/Mustafa_Kemal_Atat%C3%BCrk)
 
+---
+
+## 🧠 Kısa Özet
+
+## 🧠 Kısa Özet
+
+| *Aşama* | *Model / Teknik* | *Amaç* |
+|:----------:|:------------------:|:---------|
+| 1️⃣ *Retriever (FAISS)* | intfloat/multilingual-e5-large | En benzer pasajları bulur |
+| 2️⃣ *Reranker* | cross-encoder/ms-marco-MiniLM-L-6-v2 | En anlamlı pasajı seçer |
+| 3️⃣ *Generator (LLM)* | Gemini API | Nihai cevabı üretir |
+| 4️⃣ *Explainability* | Kaynak bağlantıları | Kullanıcıya şeffaflık sağlar |
+
+---
+
+### 🔍 Sonuç
+
+> “*Rerank skoru*” yüksek olan pasajlar, cevabın çekirdeğini oluşturur.  
+> Bu skor, projenin doğru bilgiye erişim kalitesini ölçmek için de bir *metrik* olarak değerlendirilebilir.
+
+---
+### 💡 Ek Bilgi
+
+*Rerank skoru*; providers.py dosyasındaki rerank() fonksiyonu tarafından  
+CrossEncoder modeli ile (sorgu, pasaj) çiftleri üzerinden hesaplanır.
+
+Model:
+```python
+from sentence_transformers import CrossEncoder
+model = CrossEncoder("cross-encoder/ms-marco-MiniLM-L-6-v2")
+```
 
 🧠 Örnek Yanıtlar
 
