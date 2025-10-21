@@ -1,0 +1,14 @@
+{
+  "dataset": "wikimedia/wikipedia:20231101.tr",
+  "max_pages": 500,
+  "chunk_size": 1000,
+  "chunk_overlap": 100,
+  "max_chunks": 8000,
+  "faiss": {
+    "type": "HNSWFlat",
+    "metric": "IP",
+    "M": 32,
+    "efConstruction": 80
+  },
+  "emb_model": "intfloat/multilingual-e5-small"
+}
