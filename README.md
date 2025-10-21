@@ -115,6 +115,63 @@ flowchart TD
     E --> F[Gemini LLM]
     F --> G[Cevap + Kaynaklar]
 ```
+---
+
+## 🔎 Kaynakların Gösterimi ve Rerank Skoru
+
+### 📚 Neden Kaynaklar Gösteriliyor?
+
+Bu proje, **Retrieval-Augmented Generation (RAG)** mimarisine dayalı olduğu için, sistem sadece LLM’in ürettiği metni göstermiyor;  
+aynı zamanda cevabın dayandığı **orijinal Wikipedia pasajlarını** da kullanıcının erişimine açıyor.  
+Bunun iki temel nedeni var:
+
+1. **Doğrulanabilirlik (Explainability):**  
+   LLM’ler bazen “hallucination” (uydurma) yanıtlar verebilir.  
+   Kullanıcıya kaynağı göstermek, modelin yanıtının gerçekten Wikipedia verisinden mi türetildiğini görmesini sağlar.
+
+2. **Şeffaflık ve güven:**  
+   Son kullanıcı, cevabın hangi makaleden veya URL’den geldiğini açıkça görebilir.  
+   Bu, sistemi hem akademik hem de üretim ortamında daha güvenilir hale getirir.
+
+---
+
+### 🧮 Rerank Skoru Nedir?
+
+**Rerank skoru**, bir sorgu ile elde edilen Wikipedia pasajlarının **sorguya ne kadar anlamca yakın olduğunu** ölçen bir benzerlik skorudur.
+
+1. **İlk aşamada**, FAISS vektör araması ile sorguya en benzer `N` pasaj bulunur.  
+   (Bu aşamada benzerlikler sadece embedding uzayında ölçülür — genellikle **cosine similarity**.)
+
+2. **İkinci aşamada**, her bir aday pasaj yeniden değerlendirilir (**re-ranking**)  
+   ve sorgu ile pasaj arasındaki semantik ilişki **cross-encoder modeli** (`cross-encoder/ms-marco-MiniLM-L-6-v2`) kullanılarak yeniden puanlanır.
+
+3. Bu model, sorgu ve pasaj çiftini birlikte değerlendirir ve 0.0 ile 1.0 arasında bir **relevance score (rerank skoru)** üretir.
+
+4. Sonuç olarak:
+   - En yüksek skorlu pasaj(lar) **LLM’e bağlam olarak verilir**,  
+   - Diğerleri kaynak olarak listelenir.
+
+---
+
+### 🔢 Rerank Skoru Nasıl Hesaplanır?
+
+```python
+from sentence_transformers import CrossEncoder
+
+model = CrossEncoder("cross-encoder/ms-marco-MiniLM-L-6-v2")
+
+# Örnek sorgu ve ilk FAISS sonuçlarından alınan pasajlar
+query = "Türkiye'nin ilk kadın pilotu kimdir?"
+passages = [
+    "Sabiha Gökçen Türkiye'nin ilk kadın pilotudur.",
+    "Türkiye Cumhuriyeti 1923 yılında ilan edilmiştir."
+]
+
+pairs = [(query, p) for p in passages]
+scores = model.predict(pairs)
+
+# scores ≈ [0.97, 0.23]
+```
 🧠 Örnek Yanıtlar
 
 Soru: Türkiye’nin başkenti hangi şehirdir?
