@@ -193,7 +193,6 @@ Bu durumda sistem, **Sabiha Gökçen**’i içeren pasajı seçer ve cevabı şu
 
 ## 🧠 Kısa Özet
 
-## 🧠 Kısa Özet
 
 | *Aşama* | *Model / Teknik* | *Amaç* |
 |:----------:|:------------------:|:---------|
@@ -221,26 +220,41 @@ from sentence_transformers import CrossEncoder
 model = CrossEncoder("cross-encoder/ms-marco-MiniLM-L-6-v2")
 ```
 
-🧠 Örnek Yanıtlar
+## 🧩 Örnek Yanıtlar
 
-Soru: Türkiye’nin başkenti hangi şehirdir?
-Cevap: Ankara
-Kaynak: Wikipedia - Türkiye
+---
 
-⸻
+### ❓ Soru:
+**Türkiye'nin başkenti hangi şehirdir?**
 
-Soru: Türkiye’nin ilk kadın pilotu kimdir?
-Cevap: Sabiha Gökçen
-Kaynak: Wikipedia - Mustafa Kemal Atatürk
+**✅ Cevap:** Ankara  
+**📚 Kaynak:** [Wikipedia - Türkiye](https://tr.wikipedia.org/wiki/T%C3%BCrkiye)
 
-⸻
+---
 
-Soru: Beşiktaş ne zaman kuruldu?
-Cevap: 1903 yılında
-Kaynak: Wikipedia - Beşiktaş JK
+### ❓ Soru:
+**Türkiye'nin ilk kadın pilotu kimdir?**
 
-📊 Performans ve Özellikler
-	•	Ortalama yanıt süresi: 1.3 saniye
-	•	Toplam vektör sayısı: ~80.000 pasaj
-	•	Ortalama FAISS arama hızı: <200ms
-	•	Türkçe metinler için optimize edilmiş özel preprocessing pipeline
+**✅ Cevap:** Sabiha Gökçen  
+**📚 Kaynak:** [Wikipedia - Mustafa Kemal Atatürk](https://tr.wikipedia.org/wiki/Mustafa_Kemal_Atat%C3%BCrk)
+
+---
+
+### ❓ Soru:
+**Beşiktaş ne zaman kuruldu?**
+
+**✅ Cevap:** 1903 yılında  
+**📚 Kaynak:** [Wikipedia - Beşiktaş JK](https://tr.wikipedia.org/wiki/Be%C5%9Fikta%C5%9F_JK)
+
+---
+
+## 📈 Performans ve Özellikler
+
+- ⚡ **Ortalama yanıt süresi:** ~1.3 saniye  
+- 🧠 **Toplam vektör sayısı:** ≈ 80.000 pasaj  
+- 🎯 **FAISS** ile yüksek hızlı benzerlik araması  
+- 🧩 Türkçe metinler için özel optimize edilmiş **preprocessing pipeline**
+
+---
+
+> Bu sonuçlar, sistemin Wikipedia tabanlı Türkçe sorgulara saniyeler içinde doğru ve kaynaklı yanıtlar üretebildiğini göstermektedir.
