@@ -147,16 +147,48 @@ pip install -r requirements.txt
 ```bash
 python data_preparation.py
 ```
-Hugging Face Deployment
-Screts ve Variables
-Key    Açıklama
-GOOGLE_API_KEY
-Gemini API anahtarı
-HF_SPACE_REPO_ID
-(örnek: ecceembusra/turkish-wikipedia-rag)
+## 🔐 Deployment Secrets ve Variables
 
-Bu bilgiler Settings → Variables and Secrets alanında tanımlanır.
-API anahtarları gizli tutulur, public kullanıcılar tarafından görüntülenemez.
+Uygulama hem **Hugging Face Spaces** hem de **Render** platformları üzerinden çalıştırılabilir.  
+Her iki platformda da API anahtarları ve proje bilgileri **gizli değişkenler (Secrets / Variables)** alanına eklenmelidir.
+
+---
+
+### 🤗 Hugging Face Deployment Secrets
+
+Hugging Face üzerinden çalıştırmak için aşağıdaki ortam değişkenlerini tanımlayın:
+
+| Değişken Adı | Açıklama | Örnek Değer |
+|---------------|-----------|--------------|
+| `GOOGLE_API_KEY` | Gemini API anahtarı (Google AI Studio üzerinden alınır) | `AIzaSyB...` |
+| `HF_SPACE_REPO_ID` | Hugging Face Space kimliği | `ecceembusra/turkish-wikipedia-rag` |
+
+> 💡 **Not:** Bu bilgiler `Settings → Variables and Secrets` sekmesinden tanımlanmalıdır.  
+> API anahtarları gizli tutulur, **public kullanıcılar tarafından görüntülenemez.**
+
+---
+
+### ⚙️ Render Deployment Secrets
+
+Render üzerinde deploy işlemi yapılacaksa aşağıdaki ortam değişkenlerini tanımlayın:
+
+| Değişken Adı | Açıklama | Örnek Değer |
+|---------------|-----------|--------------|
+| `GOOGLE_API_KEY` | Gemini API anahtarı (Google AI Studio üzerinden alınır) | `AIzaSyB...` |
+| `HF_SPACE_REPO_ID` | (Opsiyonel) Hugging Face Space ID (eğer HF tabanlı entegrasyon kullanılacaksa) | `ecceembusra/turkish-wikipedia-rag` |
+| `PORT` | Streamlit uygulamasının Render tarafından dinleneceği port | `10000` |
+| `PYTHON_VERSION` | (Opsiyonel) Render build için kullanılacak Python sürümü | `3.10` |
+
+> ⚙️ **Render Ayar Adımları:**
+> 1. Render projesinde **Environment → Environment Variables** sekmesine gidin.  
+> 2. Yukarıdaki değişkenleri tek tek ekleyin.  
+> 3. Her değişiklikten sonra **“Save Changes”** ve ardından **“Redeploy”** butonuna basın.  
+> 4. Deploy tamamlandığında uygulama otomatik olarak belirtilen port üzerinden çalışır.
+
+---
+
+✨ Bu değişkenler, hem **RAG tabanlı chatbotun doğru API erişimini** sağlar  
+hem de deploy sürecinde **bağlantı ve kimlik doğrulama hatalarının** önüne geçer.
 
 🧩 RAG Pipeline Akışı
 ```bash
