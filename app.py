@@ -1,7 +1,7 @@
 # app.py
 import os, textwrap
 import streamlit as st
-from rag_pipeline import load_vectorstore, search, generate_answer
+from rag_pipeline import load_vectorstore, generate_answer
 
 st.set_page_config(page_title="Turkish Wikipedia Q&A (Gemini RAG)", page_icon="🧠")
 
@@ -52,4 +52,5 @@ if st.button("Cevabı Getir", type="primary", use_container_width=True) and quer
         st.error("Bir hata oluştu.")
 
         st.exception(e)
+
 
