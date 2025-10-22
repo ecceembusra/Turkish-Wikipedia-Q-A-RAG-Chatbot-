@@ -13,6 +13,7 @@ Model, arka planda **vektör benzerliği**, **FAISS tabanlı indeksleme** ve **G
 
 Uygulama Hugging Face Spaces üzerinde barındırılmaktadır:  
 👉 [**Live Demo (Hugging Face Space)**](https://huggingface.co/spaces/ecceembusra/turkish-wikipedia-rag)
+
 Uygulama Render Spaces üzerinde barındırılmaktadır:  
 👉 [**Live Demo (Render Space)**](https://huggingface.co/spaces/ecceembusra/turkish-wikipedia-rag)
 
