@@ -134,6 +134,48 @@ turkish-wikipedia-rag/
 > - “Beşiktaş ne zaman kuruldu?”
 
 ---
+## ⚙️ Pasaj Sayısı (Top K) Ayarı
+
+Bu projede kullanıcıdan gelen soruya en uygun yanıtı üretmek için, **Retriever (FAISS)** aracılığıyla vektör veritabanından en benzer birkaç pasaj seçilir.  
+Bu sayı, arayüzdeki **Top K** parametresiyle ayarlanabilir.
+
+| Parametre | Açıklama | Etkisi |
+|------------|-----------|--------|
+| `Top K = 2` | En yakın 2 pasaj seçilir | Daha hızlı ama bazen eksik bilgi |
+| `Top K = 5` | Dengeli seçim (varsayılan) | Yüksek doğruluk, orta hız |
+| `Top K = 8+` | Daha fazla bağlam getirilir | Daha kapsamlı ama daha yavaş |
+
+📊 **Streamlit arayüzünde**, kullanıcı bu değeri sürgü (slider) ile dinamik olarak değiştirebilir.  
+Bu sayede kısa sorular için düşük, detaylı sorular için yüksek değerler seçilebilir.
+
+---
+
+### 🔍 Çalışma Mantığı
+1. **Retriever (FAISS)** → En benzer K adet pasajı getirir.  
+2. **Reranker (CrossEncoder)** → Bu pasajların skorlarını yeniden hesaplar.  
+3. **LLM (Gemini)** → En yüksek skorlu pasajlardan nihai cevabı oluşturur.  
+
+---
+
+### 🧠 Örnek Kullanım
+
+| Soru | Top K | Yanıt |
+|------|--------|-------|
+| Türkiye'nin başkenti hangi şehirdir? | 2 | Ankara |
+| Türkiye'nin ilk kadın pilotu kimdir? | 5 | Sabiha Gökçen |
+| Cumhuriyetin ilanı sürecinde neler olmuştur? | 8 | Detaylı açıklama |
+
+---
+
+### 💡 Not
+Top K değeri:
+- **Yanıt doğruluğu**,  
+- **Sorgu süresi**  
+- ve **kaynak çeşitliliği**  
+üzerinde doğrudan etkilidir.  
+Bu nedenle proje hem hız hem doğruluk açısından esnek yapıdadır.
+
+---
 
 ## 🧰 Kurulum
 
