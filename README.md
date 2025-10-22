@@ -17,6 +17,40 @@ Uygulama Hugging Face Spaces üzerinde barındırılmaktadır:
 Uygulama Render Spaces üzerinde barındırılmaktadır:  
 👉 [**Live Demo (Render Space)**](https://huggingface.co/spaces/ecceembusra/turkish-wikipedia-rag)
 
+---
+
+## 🧩 Veri Seti Hakkında
+
+Bu proje, **Türkçe Wikipedia** makalelerinden oluşturulmuş özel bir veri kümesi kullanmaktadır.  
+Veri seti, **RAG (Retrieval-Augmented Generation)** tabanlı soru–cevap sistemleri geliştirmek amacıyla hazırlanmıştır.
+
+### 📚 Kaynak
+- **Orijinal Kaynak:** [Wikipedia Türkiye Dump](https://dumps.wikimedia.org/trwiki/latest/)  
+- **Lisans:** [CC BY-SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/)  
+  (Atıf verilerek akademik ve araştırma amaçlı kullanılabilir)
+
+### 🧠 Veri Hazırlama Süreci
+1. **Veri Çekimi:** Wikipedia dökümü `wikiextractor` aracıyla temiz metin haline getirildi.  
+2. **Metin Bölütleme:** Makaleler, 300–500 kelimelik küçük parçalara (chunk) ayrıldı.  
+3. **Meta Veriler:** Her parça için başlık, kaynak URL ve ek bilgiler eklendi.  
+4. **Vektörleştirme:** Tüm parçalar **Sentence Transformers (E5 model)** kullanılarak vektörlere dönüştürüldü.  
+5. **Depolama:** Sonuçlar FAISS tabanlı vektör deposuna kaydedildi:
+   - `index.faiss` → Vektör indeksi  
+   - `meta.jsonl` → Metin parçaları ve metadata bilgileri
+
+### 📊 Veri Kümesi Özeti
+| Metrik | Değer |
+|:-------|:------:|
+| Makale Sayısı | ~30.000 |
+| Parça (Chunk) Sayısı | ~120.000 |
+| Ortalama Kelime Sayısı | 380 |
+| Kullanılan Model | `intfloat/multilingual-e5-base` |
+| Vektör Boyutu | 768 |
+
+### ⚖️ Kullanım Notu
+Veri kümesi, **herkese açık Türkçe Wikipedia** içeriklerinden oluşturulmuştur.  
+Hiçbir özel, gizli veya telifli içerik kullanılmamıştır.  
+Veri seti **araştırma, eğitim ve akademik projelerde** serbestçe kullanılabilir.
 
 ---
 
